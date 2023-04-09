@@ -1,4 +1,4 @@
-#include <Bike_detection_V2_inferencing.h> //Plaats hier je Edge Impuls Library
+#include <Bike_detection_V2_inferencing.h> //Place your Edge Impulse library here
 #include "esp_camera.h"
 
 #define CAMERA_MODEL_AI_THINKER
@@ -15,7 +15,6 @@
 dl_matrix3du_t *resized_matrix = NULL;
 ei_impulse_result_t result = {0};
 
-// setup
 void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
@@ -69,7 +68,6 @@ void setup() {
 
 void loop() { 
 
-  // Maak een foto en classificeer
   String result = classify();
 
   Serial.printf("Result: %s\n", result); 
