@@ -1,6 +1,5 @@
 #include <Bike_detection_V2_inferencing.h> //Plaats hier je Edge Impuls Library
 #include "esp_camera.h"
-#include <WiFi.h>
 
 #define CAMERA_MODEL_AI_THINKER
 #define Red_Bike 2
@@ -13,13 +12,9 @@
 #include "esp_camera.h"
 #include "camera_pins.h"
 
-const char* ssid = "*********";
-const char* password = "*********";
-
 dl_matrix3du_t *resized_matrix = NULL;
 ei_impulse_result_t result = {0};
 
-void startCameraServer();
 // setup
 void setup() {
   Serial.begin(115200);
@@ -70,21 +65,6 @@ void setup() {
   }
 
   Serial.println("Camera Ready!");
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.println("WiFi connected");
-
-  startCameraServer();
-
-  Serial.print("Camera Ready! Use 'http://");
-  Serial.print(WiFi.localIP());
-  Serial.println("' to connect");
 }
 
 void loop() { 
